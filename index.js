@@ -5,8 +5,8 @@ const app = express()
 const User = require('./models/user')
 const { createAlarm, getAlarms, deleteAlarm, updateAlarm } = require('./controllers/alarm');
 const { createAlert, getAlerts, deleteAlert, updateAlert } = require('./controllers/alert');
-const { createInvoice, getInvoices, deleteInvoice } = require('./controllers/invoice');
-const { createContact, getContacts, deleteContact } = require('./controllers/contact');
+const { createInvoice, getInvoices, deleteInvoice, updateInvoice } = require('./controllers/invoice');
+const { createContact, getContacts, deleteContact, updateContact } = require('./controllers/contact');
 const { createTaxi, getTaxies, deleteTaxi } = require('./controllers/taxi');
 const { createUmbrella, getUmbrellas, deleteUmbrella } = require('./controllers/umbrella');
 const { createNote, getNote, updateNote} = require('./controllers/note');
@@ -58,10 +58,12 @@ app.patch('/alert/:id', updateAlert)
 app.post('/invoice', createInvoice)
 app.get('/invoice', getInvoices)
 app.delete('/invoice/:id', deleteInvoice)
+app.patch('/invoice/:id', updateInvoice)
 
 app.post('/contact', createContact)
 app.get('/contact', getContacts)
 app.delete('/contact/:id', deleteContact)
+app.patch('/contact/:id', updateContact)
 
 app.post('/taxi', createTaxi)
 app.get('/taxi', getTaxies)

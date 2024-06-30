@@ -29,9 +29,19 @@ const deleteContact = (req, res) => {
   })
 }
 
+const updateContact = (req, res) => {
+  const { id } = req.params
+  const { department, firstname, name, middlename, phone, mobile, email } = req.body
+  Contact.findByIdAndUpdate(id, { department: department, firstname: firstname, name: name, middlename: middlename, phone: phone, mobile: mobile, email: email}, {runValidators: true})
+    .then((contact) => {
+      res.status(200).send({ data: contact})
+    })
+}
+
 
 module.exports = {
   createContact,
   getContacts,
-  deleteContact
+  deleteContact,
+  updateContact
 };

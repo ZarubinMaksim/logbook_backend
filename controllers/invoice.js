@@ -29,9 +29,18 @@ const deleteInvoice = (req, res) => {
   })
 }
 
+const updateInvoice = (req, res) => {
+  const { id } = req.params
+  const { room, company, vat, details, email } = req.body
+  Invoice.findByIdAndUpdate(id, { room: room, company: company, vat: vat, details: details, email: email}, {runValidators: true})
+    .then((invoice) => {
+      res.status(200).send({ data: invoice})
+    })
+}
 
 module.exports = {
   createInvoice,
   getInvoices,
   deleteInvoice,
+  updateInvoice
 };
