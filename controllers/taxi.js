@@ -29,9 +29,19 @@ const deleteTaxi = (req, res) => {
   })
 }
 
+const updateTaxi = (req, res) => {
+  const { id } = req.params
+  const { route, room, date, pax, flight, phone } = req.body
+  Taxi.findByIdAndUpdate(id, { route: route, room: room, date: date, pax: pax, flight: flight, phone: phone}, {runValidators: true})
+    .then((taxi) => {
+      res.status(200).send({ data: taxi})
+    })
+}
+
 
 module.exports = {
   createTaxi,
   getTaxies,
-  deleteTaxi
+  deleteTaxi,
+  updateTaxi,
 };
