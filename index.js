@@ -8,7 +8,7 @@ const { createAlert, getAlerts, deleteAlert, updateAlert } = require('./controll
 const { createInvoice, getInvoices, deleteInvoice, updateInvoice } = require('./controllers/invoice');
 const { createContact, getContacts, deleteContact, updateContact } = require('./controllers/contact');
 const { createTaxi, getTaxies, deleteTaxi, updateTaxi } = require('./controllers/taxi');
-const { createUmbrella, getUmbrellas, deleteUmbrella } = require('./controllers/umbrella');
+const { createUmbrella, getUmbrellas, deleteUmbrella, updateUmbrella } = require('./controllers/umbrella');
 const { createNote, getNote, updateNote} = require('./controllers/note');
 
 
@@ -73,6 +73,7 @@ app.patch('/taxi/:id', updateTaxi)
 app.post('/umbrella', createUmbrella)
 app.get('/umbrella', getUmbrellas)
 app.delete('/umbrella/:id', deleteUmbrella)
+app.patch('/umbrella/:id', updateUmbrella)
 
 app.get('/note', getNote)
 app.post('/note', createNote)

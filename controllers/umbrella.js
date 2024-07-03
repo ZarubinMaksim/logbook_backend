@@ -29,9 +29,18 @@ const deleteUmbrella = (req, res) => {
   })
 }
 
+const updateUmbrella = (req, res) => {
+  const { id } = req.params
+  const { room, umbrella } = req.body
+  Umbrella.findByIdAndUpdate(id, { room: room, umbrella: umbrella}, {runValidators: true})
+    .then((umbrella) => {
+      res.status(200).send({ data: umbrella})
+    })
+}
 
 module.exports = {
   createUmbrella,
   getUmbrellas,
   deleteUmbrella,
+  updateUmbrella,
 };
